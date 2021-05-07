@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+
+  <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+  <link href="css/style.css" rel="stylesheet" media="screen">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/dashboardFunctions.js"></script>
+
+</head>
+
+<body>
+
+
+<div class="buggyCodesHeader flex-container" id="main-header">
+
+  <div class="buggyCodesLogo" id="bCLogo">
+    <img src="img/bugShot.png" alt="buggyCodesLogo" class="bugShot rounded-circle border border-white" onmouseover="this.src='img/bugShot2.png'" onmouseout="this.src='img/bugShot.png'">
+    <span class="caption">buggyCodes</span>
+  </div>
+
+  <div class="search-box">
+      <input class="search-txt" type="text" name="" placeholder="Looking for something?">
+    <a class="search-btn" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg>
+    </a>
+  </div>
+
+
+  <div class="user" id="userdiv">
+    <img class="userIMG rounded-circle border border-white" src="img/user.png" alt="User Profile Picture">
+    <span class="caption">Hi, user!</span>
+  </div>
+
+</div>
+
+
+<nav class="navbar">
+
+  <ul class="navbar-nav">
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+        </svg>
+        <span class="link-text">Dashboard</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-newspaper" viewBox="0 0 16 16">
+          <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+          <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+        </svg>
+        <span class="link-text">News</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+        </svg>
+        <span class="link-text">Profile</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear-wide-connected" viewBox="0 0 16 16">
+          <path d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z"/>
+        </svg>
+        <span class="link-text">Settings</span>
+      </a>
+    </li>
+
+  </ul>
+
+</nav>
+
+<div class="container" id="custom-cards">
+
+  <div class="titlesContainer" id="todCont">
+    <h2 class="mainTitle pb-2">Today's Trials</h2>
+    <h6 class="subtitle">Recommended</h6> <h6 class="subtitle">||</h6>   <h6 class="subtitle">Recently added</h6>
+  </div>
+
+  <div class="row justify-content-around">
+
+    <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="first-cardContainer">
+           <img class="lessonIMG card-img" src="img/3xBugs.png" alt="First Lesson IMG">
+          <span class="lessonCaption card-subtitle">Face your first bug</span>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="second-cardContainer">
+          <img class="lessonIMG2 card-img" src="img/3x2Bugs.png" alt="Second Lesson IMG">
+          <span class="lessonCaption2 card-subtitle">I have type issues</span>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="third-cardContainer">
+          <img class="lessonIMG3 card-img" src="img/3x3Bugs.png" alt="Third Lesson IMG">
+          <span class="lessonCaption3 card-subtitle">Pointer to the world</span>
+        </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="bottomContent">
+
+    <div class="row justify-content-around">
+
+      <div class="col">
+        <div class="titlesContainer" id="statCont">
+          <h2 class="mainTitle pb-2">Your stats</h2>
+
+          <canvas id="statsChart" style="width:100%;max-width:600px"></canvas>
+
+          <script>
+
+
+
+
+          </script>
+
+
+
+
+
+
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="overviewContainer" id="overview">
+          <h2 class="boldSubtext" style="color: #f9786c">You're doing XXX!</h2>
+          <h6>Here is an overview of your learning week.</h6>
+          <h6>You managed to go through XXX bugs!</h6>
+          <br>
+          <h2 class="boldSubtext" style="color: #ffd100">Coding facts of the day:</h2>
+          <h6>There should be the result of a function that shows a coding fact.</h6>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+
+  </div>
+
+
+</body>
+
+</html>
