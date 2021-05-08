@@ -1,0 +1,34 @@
+#profile-cards {
+    padding-top: 2rem;
+}
+
+.avatarGallery {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+
+#avatarOverview {
+    margin-top: 0;
+}
+
+.text-primary {
+    color: #f9786c !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #eeba00;
+    border-color: #eeba00;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #eeba00;
+    border-color: #eeba00;
+}
+
+.card-header {
+    border-bottom: 0;
+    background-color: #f8f6f7;
+}
