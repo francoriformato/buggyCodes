@@ -1,0 +1,35 @@
+.newsContainer {
+    justify-content: center;
+}
+
+.newsIMG {
+    height: 400px;
+}
+
+.dh-header-non-rectangular-container h1, p {
+    color: white;
+    font-weight: bold;
+}
+
+.clearmargin {
+    margin-left: 20px;
+    margin-top: 0;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+.clearpadding {
+    padding: 0px;
+}
+
+.row-image-txt {
+    background-color: white;
+}
+
+.row-image-txt h1 {
+    color: black;
+}
+
+.row-image-txt p {
+    color: black;
+}
