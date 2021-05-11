@@ -6,18 +6,17 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News</title>
+  <title>About buggyCodes</title>
 
 
   <link href="css/bootstrap.css" rel="stylesheet" media="screen">
   <link href="css/style.css" rel="stylesheet" media="screen">
-  <link href="css/newsPage.css" rel="stylesheet" media="screen">
+  <link href="css/aboutPage.css" rel="stylesheet" media="screen">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/dashboardFunctions.js"></script>
-
 
 </head>
 
@@ -50,7 +49,6 @@
 </header>
 
 <body>
-
 <nav class="navbar">
 
   <ul class="navbar-nav">
@@ -99,35 +97,42 @@
 
 </nav>
 
-<br>
 
-<div class="newsContainer row clearmargin clearpadding row-image-txt">
-  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/uglyNews.png); background-position:center;">
-    <div></div>
+<div class="container" id="about-container">
+
+  <div class="titlesContainer">
+    <h2 class="mainTitle pb-2">What is buggyCodes?</h2>
+    <h6> buggyCodes is a platform where the user can access a variety of lessons about the programming logic. <br>
+      Each lesson will start with the presentation of a real
+      situation, showing what could go wrong if the associated
+      code fails to work properly. <br>
+      Subsequently, the user will be prompted to select which
+      portion of the code has the bug that breaks its functionality. <br>
+      Some examples may be an infinite loop caused by a badly
+      implemented while-loop, a type conflict or a bad use of pointers. <br>
+    </h6>
+
+    <div class="titlesContainer">
+      <h2 class="mainTitle pb-2">Main features:</h2>
+
+      <h6>
+        - Simple to understand code snippets in pseudo-language; <br>
+        - Real situation that can be solved through coding; <br>
+        - Funny examples to learn from; <br>
+        - A stats log to track your progression; <br>
+        - User friendly interface. <br>
+      </h6>
   </div>
+    </div>
 
-  <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding:20px;">
-    <h1>buggyCodes out now!</h1>
-    <hr>
-    <p>Here goes a news about buggyCodes.</p>
-  </div>
-</div>
+  <footer>
+    <h6> Project developed by Franco Riformato, University of Naples "Parthenope", 0124 001968. <br>
+    Source code available on my <a href="https://github.com/francoriformato/buggyCodes">Github repository</a>. </h6>
+  </footer>
 
-<br>
 
-<div class="newsContainer row clearmargin clearpadding row-image-txt">
 
-  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/uglyNews2.png); background-position:center;">
-    <div></div>
-  </div>
-
-  <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding:20px;">
-    <h1>Another news title</h1>
-    <hr>
-    <p>Here goes another news about buggyCodes.</p>
-  </div>
 </div>
 
 </body>
-
 </html>
