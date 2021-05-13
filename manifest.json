@@ -1,0 +1,16 @@
+{
+  "name": "buggyCodes",
+  "short_name": "buggyCodes",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#2A3443",
+  "description": "A way to learn code through bugs",
+  "theme_color": "#2A3443",
+  "icons": [
+    {
+      "src": "./img/bugShot.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
