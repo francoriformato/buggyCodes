@@ -306,12 +306,10 @@ main {
         margin: 0;
     }
 
-    .search-box:hover > .search-txt {
+    .search-box:hover > .search-txt{
         width: 240px;
         padding: 0 6px;
-
     }
-
 
 
     .search-txt {
@@ -326,6 +324,7 @@ main {
 
 
 }
+
 
 /* Large screens */
 
@@ -370,7 +369,5 @@ main {
     .buggyCodesHeader {
         justify-content: space-evenly;
     }
-
-
 
 }

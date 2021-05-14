@@ -1,7 +1,21 @@
 /* There will be some JS Function for the dashboard of buggyCodes */
 
 function openURL() {
-    window.open('https://www.google.it', '_self');
+    window.open('./profilePage.html', '_self');
+}
+
+function hideUser() {
+    if (window.innerWidth < 900) {
+        x = document.getElementById("userdiv");
+        x.style.display = "none"
+    }
+}
+
+function showUser() {
+    if (window.innerWidth < 900) {
+        z = document.getElementById("userdiv");
+        z.style.display = "block"
+    }
 }
 
 
