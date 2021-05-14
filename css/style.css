@@ -73,6 +73,24 @@ main {
     color: #eeba00;
 }
 
+
+.content {
+    padding: 16px;
+}
+
+.sticky {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+
+
+
 .link-text {
     display: none;
     margin-left: 1rem;
