@@ -215,7 +215,6 @@ main {
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: bold;
-    font-size: 14px;
     background-color: #fdc689;
     padding-bottom: 0.2vw;
 
@@ -226,7 +225,6 @@ main {
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: bold;
-    font-size: 14px;
     background-color: #74c5c9;
     padding-bottom: 0.2vw;
 
@@ -237,7 +235,6 @@ main {
     display: block;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: bold;
-    font-size: 14px;
     background-color: #f5d8d2;
     padding-bottom: 0.2vw;
 
@@ -305,7 +302,20 @@ main {
 /* Small screens */
 @media only screen and (max-width: 900px) {
 
-.navbar {
+    .lessonCaption {
+        font-size: 12px;
+    }
+
+    .lessonCaption2 {
+        font-size: 12px;
+    }
+
+    .lessonCaption3 {
+        font-size: 12px;
+    }
+
+
+    .navbar {
     display: inline-block;
     bottom: 0;
     width: 100vw;
@@ -347,6 +357,18 @@ main {
 /* Large screens */
 
 @media only screen and (min-width: 900px) {
+
+    .lessonCaption {
+        font-size: 14px;
+    }
+
+    .lessonCaption2 {
+        font-size: 14px;
+    }
+
+    .lessonCaption3 {
+        font-size: 14px;
+    }
 
     .navbar {
         display: flex;
