@@ -4,46 +4,51 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="662987229231-tjlhggo4spp8elhfitchatso25htui31.apps.googleusercontent.com">
     <title>Login</title>
 
 
-  <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-  <link rel="stylesheet" href="css/loginPage.css">
+    <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="css/loginPage.css">
 
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/loginPage.js"></script>
-    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/loginFunctions.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 </head>
 
-<body>
+<body style="background-color: #f4dbc8">
+
 <section class="login-clean">
-    <form class="jello animated" method="post">
-        <h2 class="visually-hidden">Login Form</h2>
+    <div class="jello animated">
         <div class="illustration">
             <div class="buggyCodesLogo" id="bCLogo">
                 <img src="img/bugShot.png" alt="buggyCodesLogo" class="bugShot rounded-circle border border-white" onmouseover="this.src='img/bugShot2.png'" onmouseout="this.src='img/bugShot.png'">
                 <span class="caption">buggyCodes</span>
+
+                <br>
+
+                <div id="gProfileShow"> </div>
+
+                <div class="g-signin2 centered" id="gButton" data-onsuccess="onSignIn"></div>
+                <br>
+                <div class="mb-3" id="redirector"> <button class="btn btn-primary d-block w-100"  type="button" onclick="openDashboard()">Go to your dashboard</button></div>
+                <div class="mb-3" id="gOut"> <button class="btn btn-primary d-block w-100"  type="button" onclick="signOut()">Sign out</button></div>
             </div>
         </div>
-        <div class="hiddenRegister mb-3" id="name"> <input class="form-control" type="text" name="firstname" placeholder="First Name"></div>
-        <div class="hiddenRegister mb-3" id="surname"> <input class="form-control" type="text" name="lastname" placeholder="Last Name"></div>
-        <div class="hiddenRegister mb-3" id="username"> <input class="form-control" type="text" name="username" placeholder="Username"></div>
+    </div>
 
-        <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-        <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
 
-        <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Log In</button></div>
-        <div class="mb-3" ><button class="btn btn-primary d-block w-100" id="register" type="button" onclick="showRegistrationFields()">Register</button></div>
-    </form>
 </section>
 
 </body>
 
 <footer>
+    <br> <br> <br>
     <div class="loginBottom">
         <h6 style="color: #f9786c">Web Technologies Project, Franco Riformato [ 0124 001968 ]</h6>
     </div>

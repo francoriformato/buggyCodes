@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="google-signin-client_id" content="662987229231-tjlhggo4spp8elhfitchatso25htui31.apps.googleusercontent.com">
   <title>Dashboard</title>
 
 
@@ -15,9 +18,10 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
-  <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/dashboardFunctions.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+
 
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -27,7 +31,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 
-  <meta name="apple-mobile-web-app-capable" content="yes" />
+
   <link href="/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
   <link href="/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
   <link href="/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
@@ -66,7 +70,7 @@
 
 </header>
 
-<body>
+<body onload="checkUser()">
 
 <nav class="navbar">
 

@@ -4,8 +4,8 @@
   "start_url": ".",
   "display": "standalone",
   "background_color": "#2A3443",
-  "description": "A way to learn code through bugs",
-  "theme_color": "#2A3443",
+  "description": "buggyCodes: a way to learn code through bugs",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "./img/bugShot.png",

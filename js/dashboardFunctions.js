@@ -1,5 +1,31 @@
 /* There will be some JS Function for the dashboard of buggyCodes */
 
+
+//Session Keeper
+
+function checkUser(){
+    var paramCheck = new URLSearchParams(window.location.search),
+        userToken = JSON.parse(paramCheck.get("userToken"));
+
+    if (userToken == null) {
+        window.open('./loginPage.html', '_self');
+    }
+}
+
+function get(){
+    // (A) GET THE PARAMETERS
+    var params = new URLSearchParams(window.location.search),
+        userName = params.get("userName"),
+        userToken = JSON.parse(params.get("userToken"));
+
+    // (B) IT WORKS!
+    console.log(userName);
+    console.log(userToken);
+}
+
+
+
+
 function openURL() {
     window.open('./profilePage.html', '_self');
 }

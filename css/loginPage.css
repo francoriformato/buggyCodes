@@ -1,4 +1,8 @@
 
+.centered {
+    margin: auto;
+    justify-content: center;
+}
 .login-clean {
     background: #f4dbc8;
     padding: 80px;
@@ -18,7 +22,6 @@
 .login-clean .illustration {
     text-align: center;
     padding: 0 0 20px;
-    font-size: 100px;
     color: rgb(244,71,107);
 }
 
@@ -67,7 +70,15 @@
     text-decoration: none;
 }
 
-.hiddenRegister {
+#redirector {
+    display: none;
+}
+
+#gProfileShow {
+    display: none;
+}
+
+#gOut {
     display: none;
 }
 
