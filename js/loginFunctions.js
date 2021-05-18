@@ -34,18 +34,18 @@ function signOut() {
 
 // Session Keeper
 function openDashboard(){
-    // (A) VARIABLES TO PASS
+
     var userName = "Franco";
     var userToken = "tokenID";
 
-    // (B) URL PARAMETERS
+
     var params = new URLSearchParams();
     params.append("userName", userName);
     params.append("userToken", JSON.stringify(userToken));
 
-    // (C) GO!
+
     var url = "dashboardRedirector.html?" + params.toString();
     location.href = url;
-    window.open(url);
+    window.open(url, '_self');
 }
 

@@ -1,5 +1,5 @@
 function redirectDashboard(dashType){
-    // (A) GET THE PARAMETERS
+
     var params = new URLSearchParams(window.location.search),
         userName = params.get("userName"),
         userToken = JSON.parse(params.get("userToken"));
@@ -7,10 +7,10 @@ function redirectDashboard(dashType){
     params.append("userName", userName);
     params.append("userToken", JSON.stringify(userToken));
 
-    // (C) GO!
+
     var url = dashType + "?" + params.toString();
     location.href = url;
-    window.open(url);
+    window.open(url, '_self');
 }
 
 
@@ -23,4 +23,6 @@ function checkBrowser() {
         redirectDashboard('dashboard.html');
     }
 }
+
+
 
