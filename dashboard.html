@@ -6,39 +6,46 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <link href="iOS_splashscreens/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+
+
   <meta name="google-signin-client_id" content="662987229231-tjlhggo4spp8elhfitchatso25htui31.apps.googleusercontent.com">
+
   <title>Dashboard</title>
 
 
   <link href="css/bootstrap.css" rel="stylesheet" media="screen">
-  <link href="css/style.css" rel="stylesheet" media="screen">
-  <link rel="manifest" href="./manifest.json">
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/dashboardFunctions.js"></script>
-  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link href="css/style.css" rel="stylesheet" media="screen">
+
+
+  <link rel="manifest" href="./manifest.json">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#000000">
 
 
-  <link href="/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-  <link href="/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+  <script src="js/dashboardFunctions.js"></script>
+  <script src="js/dashboardRendering.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 
 </head>
 
@@ -51,14 +58,6 @@
       <span class="caption">buggyCodes</span>
     </div>
 
-    <div class="search-box" onclick="hideUser()">
-      <input class="search-txt" type="text" name="" placeholder="Looking for something?" onfocusout="showUser()">
-      <a class="search-btn" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-        </svg>
-      </a>
-    </div>
 
 
     <div class="user" id="userdiv">
@@ -71,6 +70,7 @@
 </header>
 
 <body onload="checkUser()">
+
 
 <nav class="navbar">
 
@@ -130,7 +130,7 @@
     <h6 class="subtitle">Recommended</h6> <h6 class="subtitle">||</h6>   <h6 class="subtitle">Recently added</h6>
   </div>
 
-  <div class="row justify-content-around">
+  <div class="row">
 
     <div class="col">
 
@@ -178,9 +178,6 @@
 
 
           </script>
-
-
-
 
 
 

@@ -3,14 +3,6 @@
 
 //Session Keeper
 
-function checkUser(){
-    var paramCheck = new URLSearchParams(window.location.search),
-        userToken = JSON.parse(paramCheck.get("userToken"));
-
-    if (userToken == null) {
-        window.open('./loginPage.html', '_self');
-    }
-}
 
 function get(){
     // (A) GET THE PARAMETERS
@@ -22,6 +14,7 @@ function get(){
     console.log(userName);
     console.log(userToken);
 }
+
 
 
 

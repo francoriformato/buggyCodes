@@ -44,7 +44,7 @@ function openDashboard(){
     params.append("userToken", JSON.stringify(userToken));
 
     // (C) GO!
-    var url = "dashboard.html?" + params.toString();
+    var url = "dashboardRedirector.html?" + params.toString();
     location.href = url;
     window.open(url);
 }

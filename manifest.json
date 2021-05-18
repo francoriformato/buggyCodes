@@ -3,13 +3,14 @@
   "short_name": "buggyCodes",
   "start_url": ".",
   "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#fdc689",
   "background_color": "#2A3443",
   "description": "buggyCodes: a way to learn code through bugs",
-  "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "./img/bugShot.png",
-      "sizes": "512x512",
+      "src": "./favicons/android-chrome-256x256.png",
+      "sizes": "256x256",
       "type": "image/png"
     }
   ]

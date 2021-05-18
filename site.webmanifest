@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "buggyCodes",
+    "short_name": "buggyCodes",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -13,7 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#fdc689",
+    "background_color": "#2A3443",
+    "orientation": "portrait",
     "display": "standalone"
 }

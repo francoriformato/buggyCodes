@@ -126,6 +126,10 @@ main {
     cursor: pointer;
 }
 
+.lessonContainer {
+    cursor: pointer;
+}
+
 .subtitle {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: lighter;
@@ -407,7 +411,7 @@ main {
 
 
     .buggyCodesHeader {
-        justify-content: space-evenly;
+        justify-content: space-around;
     }
 
 }

@@ -6,18 +6,47 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News</title>
+
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+  <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <link href="iOS_splashscreens/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+  <link href="iOS_splashscreens/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+
+
+  <meta name="google-signin-client_id" content="662987229231-tjlhggo4spp8elhfitchatso25htui31.apps.googleusercontent.com">
+
+  <title>Dashboard</title>
 
 
   <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+  <script src="js/bootstrap.min.js"></script>
+
+
   <link href="css/style.css" rel="stylesheet" media="screen">
   <link href="css/newsPage.css" rel="stylesheet" media="screen">
 
 
-  <script src="js/bootstrap.min.js"></script>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#000000">
+
+
   <script src="js/dashboardFunctions.js"></script>
   <script src="js/dashboardRendering.js"></script>
-
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
 
 </head>
 
@@ -48,7 +77,7 @@
   <ul class="navbar-nav">
 
     <li class="nav-item">
-      <a href="dashboardRedirector.html" class="nav-link">
+      <a href="dashboard.html" class="nav-link">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
           <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
@@ -91,37 +120,69 @@
 
 </nav>
 
-<br>
+<div class="container" id="custom-cards">
+
+<div class="titlesContainer" id="todCont" style="margin-left: 40px">
+  <h2 class="mainTitle pb-2">Today's Trials</h2>
+  <h6 class="subtitle">Recommended</h6> <h6 class="subtitle">||</h6>   <h6 class="subtitle">Recently added</h6>
+</div>
+
 
 <div class="newsContainer row clearmargin clearpadding row-image-txt">
-  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/uglyNews.png); background-position:center;">
+  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/mobile3xBugs.png); background-position:center;">
     <div></div>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding:20px;">
-    <h1>buggyCodes out now!</h1>
-    <hr>
-    <p>Here goes a news about buggyCodes.</p>
+    <h1 style="text-align: center; font-size: 20px">Face your first bug</h1>
   </div>
 </div>
 
-<br>
+
 
 <div class="newsContainer row clearmargin clearpadding row-image-txt">
-
-  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/uglyNews2.png); background-position:center;">
+  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/mobile3x2Bugs.png); background-position:center;">
     <div></div>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding:20px;">
-    <h1>Another news title</h1>
-    <hr>
-    <p>Here goes another news about buggyCodes.</p>
+    <h1 style="text-align: center; font-size: 20px">I have type issues</h1>
   </div>
 </div>
 
+
+<div class="newsContainer row clearmargin clearpadding row-image-txt">
+  <div class="newsIMG col clearmargin clearpadding" style="background-image:url(img/mobile3x3Bugs.png); background-position:center;">
+    <div></div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-6 col-sm-pull-6" style="padding:20px;">
+    <h1 style="text-align: center; font-size: 20px">Pointer to the world</h1>
+  </div>
+</div>
+
+</div>
+
+
+<div class="titlesContainer" id="statCont" style="margin-left: 50px">
+  <h2 class="mainTitle pb-2">Your stats</h2>
+</div>
+
+<div class="col-4" style="float: right; margin-right: 15px">
+  <div class="overviewContainer" id="overview" style="float: right">
+    <h2 class="boldSubtext" style="color: #f9786c">You're doing XXX!</h2>
+    <h6>Here is an overview of your learning week.</h6>
+    <h6>You managed to go through XXX bugs!</h6>
+    <br>
+    <h2 class="boldSubtext" style="color: #ffd100">Coding facts of the day:</h2>
+    <h6>There should be the result of a function that shows a coding fact.</h6>
+  </div>
+</div>
+
+
+
+<br> <br> <br>
 </body>
 
-<footer> <br>  <br> </footer>
 
 </html>
