@@ -1,21 +1,34 @@
 /* There will be some JS Function for the dashboard of buggyCodes */
 
-
 //Session Keeper
 
 
 function get(){
-    // (A) GET THE PARAMETERS
-    var params = new URLSearchParams(window.location.search),
-        userName = params.get("userName"),
-        userToken = JSON.parse(params.get("userToken"));
 
-    // (B) IT WORKS!
-    console.log(userName);
-    console.log(userToken);
+    console.log(window.localStorage.getItem('user'));
 }
 
+function checkDashboardM() {
 
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        console.log('we are on mobile!');
+    } else {
+        console.log('redirectDashboardDESKTOP');
+        redirectDashboard('dashboard.html');
+
+    }
+}
+
+function checkDashboardD() {
+    var contatore = '1';
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        redirectDashboard('mobileDashboard.html');
+    } else {
+        console.log('we are on desktop!');
+        localStorage.setItem('stableUser', contatore);
+    }
+}
 
 
 

@@ -2,16 +2,33 @@
 
 function onSignIn(googleUser) {
     var profile = googleUser.getBasicProfile();
+
+    const Guser = {
+        ID: googleUser.getBasicProfile()['MT'],
+        name: profile.getName(),
+        email: profile.getEmail(),
+        img: profile.getImageUrl(),
+    };
+
+    console.log(JSON.parse(JSON.stringify(Guser)));
+
+    localStorage.setItem('stableUser',JSON.stringify(Guser));
+    sessionStorage.setItem('loggedUser', JSON.stringify(Guser));
+
     var x = document.getElementById('gProfileShow');
     var y = document.getElementById('gButton');
     var z = document.getElementById('gOut');
     var h = document.getElementById('redirector');
-    document.getElementById('gProfileShow').innerHTML = profile.getName() + "<br>" + "<a href='mailto:'" + profile.getEmail() + "'>" + profile.getEmail() + "</a>" + "<br>" + "<img src ='" + profile.getImageUrl() + "'/>";
+
+
+    document.getElementById('gProfileShow').innerHTML = profile.getName() + "<br>" + "<a href='mailto:'" + profile.getEmail() + "'>" + profile.getEmail() + "</a>" + "<br>" + "<img class='rounded-circle border border-white' src ='" + profile.getImageUrl() + "'/>";
+
     x.style.display = "block";
     y.style.display = "none";
     z.style.display = "block";
     h.style.display = "block";
 }
+
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -32,20 +49,23 @@ function signOut() {
 }
 
 
-// Session Keeper
-function openDashboard(){
 
-    var userName = "Franco";
-    var userToken = "tokenID";
+// Redirect to the correct dashboard ( mobile or desktop )
 
-
-    var params = new URLSearchParams();
-    params.append("userName", userName);
-    params.append("userToken", JSON.stringify(userToken));
-
-
-    var url = "dashboardRedirector.html?" + params.toString();
+function redirectDashboard(dashType){
+    var url = dashType;
     location.href = url;
     window.open(url, '_self');
 }
 
+function openDashboard(){
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        console.log('redirectDashboardMOBILE');
+        redirectDashboard('mobileDashboard.html');
+    } else {
+        console.log('redirectDashboardDESKTOP');
+        redirectDashboard('dashboard.html');
+    }
+
+}
