@@ -6,4 +6,4 @@ Project under development for Web Technologies course, attended at University of
 
 25 May 2021 : Converted buggyCodes in a nodeJS app.
               Actually, this is the overall diagram of the PWA.
-              <img src="https://imgur.com/zffETFE">
+              <blockquote class="imgur-embed-pub" lang="en" data-id="zffETFE"><a href="https://imgur.com/zffETFE">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
