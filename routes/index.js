@@ -21,4 +21,6 @@ router.get("/about",ensureAuth, async(req, res) => {
 router.get("/news",ensureAuth, async(req, res) => {
   res.render("news",{userinfo:req.user})
 });
+
+
 module.exports=router;

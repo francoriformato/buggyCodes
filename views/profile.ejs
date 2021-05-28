@@ -171,22 +171,30 @@
 
           <div class="card-body">
 
-            <form>
+            
 
               <div class="row">
 
                 <div class="col">
-                  <div class="mb-3"><label class="form-label" for="motto"><strong><%=userinfo.firstName %>'s motto</strong></label><input class="form-control" type="text" id="username" placeholder="I'm the greatest programmer!" name="username"></div>
-                </div>
+                  <div class="mb-3">
+		<form action="/add/motto" method="POST">
+			<label class="form-label" for="motto"><strong><%=userinfo.firstName %>'s motto</strong></label>
+			<input class="form-control" type="text" id="motto" placeholder="The greatest programmer!" name="motto">
+			<input type="submit" value="Add" class="btn btn-primary btn-sm">
 
+	   	 </form>
+                </div>
+		</div>
+	    <form>
                 <div class="col">
-                  <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="email" placeholder="Italy" name="email"></div>
+                  <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="Italy"></div>
                 </div>
 
               </div>
 
-              <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
-            </form>
+              <div class="mb-3"><button class="btn btn-primary btn-sm"><a href="/add/optionals">Save Settings</a></button></div>
+
+            </form>	
 
           </div>
 
