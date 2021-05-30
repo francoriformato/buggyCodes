@@ -36,6 +36,18 @@ required: true,
         type:String,
     	default: 'USA',
     },
+    level:{
+        type:Number,
+    	default: '1',
+    },
+    onlineAvatar:{
+        type:String,
+    	default: 'av0',
+    },
+    buddyMotto:{
+        type:String,
+    	default: 'Alone',
+    },
 })
 
 module.exports = mongoose.model('User', UserSchema);

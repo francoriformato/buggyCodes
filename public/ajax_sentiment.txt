@@ -1,0 +1,5 @@
+	  <h2 class="boldSubtext" style="color: #f9786c" id="adjectiveStats">You're doing XXX!</h2>
+          <h6>You managed to go through XXX bugs!</h6>
+          <br>
+          <h2 class="boldSubtext" style="color: #ffd100">Coding facts of the day:</h2>
+          <h6>There should be the result of a function that shows a coding fact.</h6>

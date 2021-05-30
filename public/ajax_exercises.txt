@@ -1,0 +1,26 @@
+   <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="first-cardContainer" onclick="openGame()">
+           <img class="lessonIMG card-img" src="img/3xBugs.png" alt="First Lesson IMG">
+          <span class="lessonCaption card-subtitle">Face your first bug</span>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="second-cardContainer">
+          <img class="lessonIMG2 card-img" src="img/3x2Bugs.png" alt="Second Lesson IMG">
+          <span class="lessonCaption2 card-subtitle">I have type issues</span>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="third-cardContainer">
+          <img class="lessonIMG3 card-img" src="img/3x3Bugs.png" alt="Third Lesson IMG">
+          <span class="lessonCaption3 card-subtitle">Pointer to the world</span>
+        </div>
+
+    </div>

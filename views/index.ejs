@@ -41,8 +41,9 @@
 
 
   <script src="js/dashboardFunctions.js"></script>
+  <script src="js/pwa.js"></script>
   <script src="js/profileFunctions.js"></script>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -66,8 +67,17 @@
 
 </header>
 
-<body>
+<script>
+$(document).ready(function(){  
+    $("#exercisesRow").load("ajax_exercises.txt");
+    $("#overview").load("ajax_sentiment.txt");
+});
+</script>
 
+
+
+
+<body>
 
 <nav class="navbar">
 
@@ -124,37 +134,12 @@
 
   <div class="titlesContainer" id="todCont">
     <h2 class="mainTitle pb-2">Today's Trials</h2>
-    <h6 class="subtitle">Recommended</h6> <h6 class="subtitle">||</h6>   <h6 class="subtitle">Recently added</h6>
+    <h6 class="subtitle">Here you can find some playful exercise to learn from!</h6>
   </div>
 
-  <div class="row">
+  <div class="row" id="exercisesRow">
 
-    <div class="col">
-
-        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="first-cardContainer" onclick="openGame()">
-           <img class="lessonIMG card-img" src="img/3xBugs.png" alt="First Lesson IMG">
-          <span class="lessonCaption card-subtitle">Face your first bug</span>
-        </div>
-
-    </div>
-
-    <div class="col">
-
-        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="second-cardContainer">
-          <img class="lessonIMG2 card-img" src="img/3x2Bugs.png" alt="Second Lesson IMG">
-          <span class="lessonCaption2 card-subtitle">I have type issues</span>
-        </div>
-
-    </div>
-
-    <div class="col">
-
-        <div class="lessonContainer card card-cover rounded-5 shadow-lg" id="third-cardContainer">
-          <img class="lessonIMG3 card-img" src="img/3x3Bugs.png" alt="Third Lesson IMG">
-          <span class="lessonCaption3 card-subtitle">Pointer to the world</span>
-        </div>
-
-    </div>
+    
 
   </div>
 
@@ -167,7 +152,7 @@
         <div class="titlesContainer" id="statCont">
           <h2 class="mainTitle pb-2">Your stats</h2>
 
-          <canvas id="statsChart" style="width:100%;max-width:600px"></canvas>
+          <canvas id="statsChart" style="width:100%;max-width:600px" </canvas>
 
           <script>
 
@@ -176,19 +161,12 @@
 
           </script>
 
-
-
         </div>
       </div>
 
       <div class="col-4">
         <div class="overviewContainer" id="overview">
-          <h2 class="boldSubtext" style="color: #f9786c">You're doing XXX!</h2>
-          <h6>Here is an overview of your learning week.</h6>
-          <h6>You managed to go through XXX bugs!</h6>
-          <br>
-          <h2 class="boldSubtext" style="color: #ffd100">Coding facts of the day:</h2>
-          <h6>There should be the result of a function that shows a coding fact.</h6>
+          
         </div>
       </div>
     </div>
