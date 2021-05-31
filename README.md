@@ -1,5 +1,5 @@
 # buggyCodes
-#### A new way to learn programmming through bugs
+#### A new way to learn programming through bugs
 
 buggyCodes is a project developed for a modern Web Technologies course, attended at University of Naples "Parthenope". A demo of the project and a video has been presented at the Hackathon "Gamification in Programming Education".
 
