@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard</title>
+    <title>Profile</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -66,7 +66,7 @@
 
 </header>
 
-<body>
+<body onload="showAvatars(<%=userinfo.level %>)">
 
 
 <nav class="navbar">
@@ -140,8 +140,7 @@
       <div class="row">		
                  <div class="col">
                     <div class="mb-3">
-                      <label class="form-label" for="motto"><strong>Nobody Knows' motto</strong></label>
-                      <h6 id="randomMotto"> Someone said: [{"<%=userinfo.buddyMotto %> </h6></div>
+                      <h6 id="randomMotto"> Someone said: "<%=randomMotto %>" </h6></div>
                   </div>
              </div>
 	</div>
@@ -198,22 +197,34 @@
           <div class="card-body">
 
             <div>
-              <h6 style="font-size: 0.875rem">Here you can choose a new avatar. It will be displayed in online ranking. <br> Maybe you will unlock new ones while playing!</h6>
+              <h6 style="font-size: 0.875rem">Here you can choose a new avatar, shown in game.<br> Maybe you will unlock new ones while playing!</h6>
 
-            <div class="user" id="avatar1container">
-              <img class="userIMG rounded-circle border border-white" id="avatar1" src="img/user.png" alt="User Profile Picture" onclick="/add/avatar/:av1">
+            <div class="user">
+              <a href="/avatar?avid=av1"> <img class="userIMG rounded-circle border border-white" id="avatar1" src="img/av1.png" alt="User Profile Picture"> </a>
             </div>
 
-            <div class="user" id="avatar2container">
-              <img class="userIMG rounded-circle border border-white" id="avatar2" src="img/user2.png" alt="User Profile Picture" onclick="/add/avatar/:av2">
+            <div class="user">
+              <a href="/avatar?avid=av2"><img class="userIMG rounded-circle border border-white" id="avatar2" src="img/av2.png" alt="User Profile Picture"></a>
             </div>
 
-              <div class="user" id="avatar3container">
-                <img class="userIMG rounded-circle border border-white" id="avatar3" src="img/user3.png" alt="User Profile Picture" onclick="/add/avatar/:av3">
+              <div class="user">
+               <a href="/avatar?avid=av3"><img class="userIMG rounded-circle border border-white" id="avatar3" src="img/av3.png" alt="User Profile Picture"></a>
               </div>
 
-              <div class="user" id="avatar4container">
-                <img class="userIMG rounded-circle border border-white" id="avatar4" src="img/user4.png" alt="User Profile Picture" onclick="/add/avatar/:av4">
+              <div class="user">
+                <a href="/avatar?avid=av4"><img class="userIMG rounded-circle border border-white" id="avatar4" src="img/av4.png" alt="User Profile Picture"></a>
+              </div>
+
+  	      <div class="user">
+                <a href="/avatar?avid=av5" class="hiddencontent" id="avatar5link"><img class="userIMG rounded-circle border border-white" id="avatar5" src="img/av5.png" alt="User Profile Picture"></a>
+              </div>
+
+	      <div class="user">
+                <a href="/avatar?avid=av6" class="hiddencontent" id="avatar6link"><img class="userIMG rounded-circle border border-white" id="avatar6" src="img/av6.png" alt="User Profile Picture"></a>
+              </div>
+
+	       <div class="user">
+                <a href="/avatar?avid=av7" class="hiddencontent" id="avatar7link"><img class="userIMG rounded-circle border border-white" id="avatar7" src="img/av7.png" alt="User Profile Picture"></a>
               </div>
 
 	        <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit"><a href="/add/level" style="color:#ffffff">For testing purpose, click here to upgrade user level +1</a></button></div>

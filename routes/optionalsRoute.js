@@ -2,23 +2,55 @@ const router=require('express').Router()
 var express    = require('express')
 var bodyParser = require('body-parser');
 const User_model=require('../models/User')
-
+var devquote = require('devquote');
+const { ensureAuth, ensureGuest } = require('../middleware/auth')
+var Filter = require('bad-words'),
+	filter = new Filter();
 
 var app = express()
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+
+router.get("/log",ensureAuth, async(req,res)=>{
+    var quote = devquote();
+    
+    var rankSearch = await User_model.aggregate([
+				{ $sort : { level: -1 } },
+				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, _id: 1 } }
+			       ]);
+
+
+    console.log(rankSearch[0].level);
+    res.render('index',{userinfo:req.user, quoteMessage: quote.text, quoteAuthor: quote.author, onlineRanking: rankSearch})
+})
+
+
+router.get("/profile",ensureAuth, async(req, res) => {
+
+   	var query = await User_model.aggregate([
+    					{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
+   					{ "$sample": { "size": 1 } },
+					{ $project: { "motto": 1,  _id: 0 } }
+				  ]).exec()
+
+	var randomStringified = JSON.stringify(query);
+	var editedMotto = randomStringified.slice(11, -3);
+ 
+        res.render("profile",{userinfo:req.user, randomMotto: editedMotto})
+});
+
+
 router.post('/add/motto', urlencodedParser, async (req, res)=>{
     
      const bodyCall = req.body;
-
+     	
      await User_model.findOneAndUpdate(
 	{ email: req.user.email },
-	{ motto: bodyCall.motto },
+	{ motto: filter.clean(bodyCall.motto) },
 	{ new: true }
 				       );
 
-    console.log(req.body);
     res.redirect('/profile')
 })
 
@@ -28,7 +60,7 @@ router.post('/add/country', urlencodedParser, async (req, res)=>{
 
      await User_model.findOneAndUpdate(
 	{ email: req.user.email },
-	{ country: countryCall.country },
+	{ country: filter.clean(countryCall.country) },
 	{ new: true }
 );
 
@@ -54,28 +86,75 @@ router.get('/add/level', urlencodedParser, async (req, res)=>{
 
 router.get('/add/randomMotto', urlencodedParser, async (req, res)=>{
 
- 	var query = 		await User_model.aggregate([
-    					{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
-   					{ "$sample": { "size": 1 } },
-					{ $project: { "motto": 1,  _id: 0 } }
-				  ]).exec()
-
-	console.log(query);
-
-	var randomStringified = JSON.stringify(query);
-	randomStringified = randomStringified.substr(11,randomStringified.length-3);
-	
-	await User_model.findOneAndUpdate(
-	{ email: req.user.email },
-	{ buddyMotto: randomStringified },
-	{ new: true }
-					 );
-
-	console.log(req.user.buddyMotto);
-
     	res.redirect('/profile');
 })
 
+
+router.get('/avatar', async function (req, res) {
+	const avid = req.query.avid;
+	console.log(avid);
+
+	await User_model.findOneAndUpdate(
+	{ email: req.user.email },
+	{ onlineAvatar: avid },
+	{ new: true }
+					 );
+
+	res.redirect('/profile');
+});
+
+
+
+
+
+router.get('/add/stats', async function (req, res) {
+	const statistic = req.query.statistic;
+	console.log(statistic);
+
+	if (statistic == "exercises") {
+	
+	await User_model.findOneAndUpdate(
+	{ email: req.user.email },
+	{ ExercisesDone: (req.user.ExercisesDone + 1) },
+	{ new: true }
+					 );
+	
+	}
+
+	
+	if (statistic == "logic") {
+	
+	await User_model.findOneAndUpdate(
+	{ email: req.user.email },
+	{ ProgrammingLogic: (req.user.ProgrammingLogic + 1) },
+	{ new: true }
+					 );
+	
+	}
+
+
+	if (statistic == "speed") {
+	
+	await User_model.findOneAndUpdate(
+	{ email: req.user.email },
+	{ Speed: (req.user.Speed + 1) },
+	{ new: true }
+					 );
+	
+	}
+
+	if (statistic == "creativity") {
+	
+	await User_model.findOneAndUpdate(
+	{ email: req.user.email },
+	{ Creativity: (req.user.Creativity + 1) },
+	{ new: true }
+					 );
+	
+	}
+	
+	res.redirect('/log');
+});
 
 
 module.exports=router;

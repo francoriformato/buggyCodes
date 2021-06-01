@@ -89,6 +89,9 @@ main {
 }
 
 
+.hiddencontent {
+	display: none;
+}
 
 
 .link-text {

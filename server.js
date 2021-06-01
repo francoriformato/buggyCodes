@@ -8,7 +8,8 @@ var cors = require('cors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 var bodyParser = require('body-parser');
-const io = require('socket.io')(3100)
+var devquote = require('devquote');
+
 
 require('./config/passport')(passport)
 

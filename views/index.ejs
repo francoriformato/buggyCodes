@@ -39,12 +39,12 @@
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#000000">
 
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2/dist/chart.min.js"></script>
   <script src="js/dashboardFunctions.js"></script>
   <script src="js/pwa.js"></script>
   <script src="js/profileFunctions.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+  
 </head>
 
 <header>
@@ -67,17 +67,14 @@
 
 </header>
 
+<body onload="loadChart(<%=userinfo.ExercisesDone %>, <%=userinfo.ProgrammingLogic %>, <%=userinfo.Speed %>, <%=userinfo.Creativity %> )">
+
 <script>
 $(document).ready(function(){  
     $("#exercisesRow").load("ajax_exercises.txt");
-    $("#overview").load("ajax_sentiment.txt");
 });
 </script>
 
-
-
-
-<body>
 
 <nav class="navbar">
 
@@ -152,24 +149,66 @@ $(document).ready(function(){
         <div class="titlesContainer" id="statCont">
           <h2 class="mainTitle pb-2">Your stats</h2>
 
-          <canvas id="statsChart" style="width:100%;max-width:600px" </canvas>
 
-          <script>
-
+	
 
 
 
-          </script>
+
+	<canvas id="myChart" style="width:100%; max-width:600px; max-height: 600px; height:600px;"></canvas>
+
+
+
+
 
         </div>
       </div>
 
       <div class="col-4">
         <div class="overviewContainer" id="overview">
-          
+	  <h2 class="boldSubtext" style="color: #f9786c" id="adjectiveStats">You're doing XXX!</h2>
+          <h6>You managed to go through <%=userinfo.ExercisesDone %> bugs!</h6>
+          <br>
+
+          <h2 class="boldSubtext" style="color: #ffd100">A random coding quote:</h2>
+          <h6><%=quoteMessage %></h6>	
+	  <h6>by <%=quoteAuthor %></h6>
         </div>
-      </div>
+
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=exercises" style="color:#ffffff;">For testing purpose, click here to change user stats: Exercises Done +1</a></button> 
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=logic" style="color:#ffffff;">For testing purpose, click here to change user stats: Programming Logic +1</a></button>  
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=speed" style="color:#ffffff;">For testing purpose,  click here to change user stats: ProgrammingSpeed +1</a></button>		   
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=creativity" style="color:#ffffff;">For testing purpose, click here to change user stats: Creativity +1</a></button>	   
+	<br> <br>
+	<div class="card mb-3">
+    	<div class="card-body text-center shadow">
+	<img class="rounded-circle mb-3 mt-4" src="/img/<%=userinfo.onlineAvatar %>.png" width="160" height="160">	
+	<h6>Your level: <%=userinfo.level %> </h6>    
+	</div>
     </div>
+	<div class="leaderboard">
+			<div class="head">
+				<h2 class="boldSubtext">Top three players right now: </h2>
+			</div>
+			<div>
+				<ol>
+					<li>
+						<mark><%=onlineRanking[0].firstName %></mark>
+						<small>with a level of <%=onlineRanking[0].level %></small>
+					</li>
+					<li>
+						<mark><%=onlineRanking[1].firstName %></mark>
+						<small>with a level of <%=onlineRanking[1].level %></small>
+					</li>
+					<li>
+						<mark><%=onlineRanking[2].firstName %></mark>
+						<small>with a level of <%=onlineRanking[1].level %></small>
+					</li>
+				</ol>
+			</div>
+		</div>
+
+ 	 </div>
 
   </div>
 

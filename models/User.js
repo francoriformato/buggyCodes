@@ -42,11 +42,23 @@ required: true,
     },
     onlineAvatar:{
         type:String,
-    	default: 'av0',
+    	default: 'av1',
     },
-    buddyMotto:{
-        type:String,
-    	default: 'Alone',
+    ExercisesDone:{
+        type:Number,
+    	default: '0',
+    },
+    ProgrammingLogic:{
+        type:Number,
+    	default: '0',
+    },
+    Speed:{
+        type:Number,
+    	default: '0',
+    },
+    Creativity:{
+        type:Number,
+    	default: '0',
     },
 })
 
