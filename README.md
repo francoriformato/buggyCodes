@@ -100,10 +100,6 @@ const UserSchema = new mongoose.Schema({
    type:String,
    default: 'av1',
     },
-    buddyMotto:{
-   type:String,
-   default: 'Alone',
-    },
 })
 
 ```
