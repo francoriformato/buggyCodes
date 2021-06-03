@@ -55,6 +55,7 @@ To archieve this purpose, I used Passport.JS with the Google Strategy. To improv
 On mongoDB, there are the main user informations required to provide the main functionality of the web app.
 In particular, we can see the User model here.
 File: *models/User.js*
+
 ```javascript
 const UserSchema = new mongoose.Schema({
   googleId: {
@@ -100,16 +101,40 @@ const UserSchema = new mongoose.Schema({
    type:String,
    default: 'av1',
     },
+    ExercisesDone:{
+        type:Number,
+    	default: '0',
+    },
+    ProgrammingLogic:{
+        type:Number,
+    	default: '0',
+    },
+    Speed:{
+        type:Number,
+    	default: '0',
+    },
+    Creativity:{
+        type:Number,
+    	default: '0',
+    },
 })
 
 ```
 
 The default values are actually used to not have empty fields when creating a new user through Google Sign-In.
 
+### UI / UX on different devices
+
+Images uploaded to show how the website is rendered on different devices.
+The overall style of the application is defined to be as similar as possibile to a native application, to give more relevance to its installability as PWA.
+
 #### Routes
+In this image gallery it's shown how the different routes are mapped to the various elements of the pages.
+The routes are divided in three different .js files contained in /routes.
+
 > Index.JS
 
-Here we have routes to render the login page, the index page, the profile page, the about page and the news page. Every page rendered through EJS.
+Here we have routes to render the login page, the about page and the news page. Every page rendered through EJS.
 In particular, every page receives parameters to know the userinfo.
 While the login page receives ensureGuest, the other routes receive ensureAuth, to be sure that the user can't access the pages of the application without being logged in.
 
@@ -143,22 +168,71 @@ There is not a Country selector because it's open the possibility to write down 
 In particular, is used to raise by 1 the userLevel.
 This is required to test the AJAX functionalities of the profile page, that "unlocks" some avatars only when the user reach an established level in game.
 
-/add/randomMotto is a funny route used to show a random motto from another user in the Profile Page.
-This routes has two mongoDB queries. The one is used to select a random motto not equal ($ne) to the current user one, while the second is used to update buddyMotto to show it on the Profile Page. 
+/add/randomMotto is a funny route used to show another random motto on the profile page. It's a simple reload of the profile page.
+In fact, in /profile, we have:
 ```
-var query = await User_model.aggregate([
-{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
-{ "$sample": { "size": 1 } },
-{ $project: { "motto": 1,  _id: 0 } } ]).exec()
+router.get("/profile",ensureAuth, async(req, res) => {
 
-var randomStringified = JSON.stringify(query);
+   	var query = await User_model.aggregate([
+    					{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
+   					{ "$sample": { "size": 1 } },
+					{ $project: { "motto": 1,  _id: 0 } }
+				  ]).exec()
 
-await User_model.findOneAndUpdate(
-{ email: req.user.email },
-{ buddyMotto: randomStringified },
-{ new: true }
-);
+	var randomStringified = JSON.stringify(query);
+	var editedMotto = randomStringified.slice(11, -3);
+ 
+        res.render("profile",{userinfo:req.user, randomMotto: editedMotto})
+});
 ```
+This route permits to the profile page to access infos such as the basic user information (userinfo) and a randomMotto.
+In particular, randomMotto is a random phrase associated to another user and requested with a mongoDB query.
+The query randomizes which motto to show, so it will show a different one every time we reload the page.
+
+Another interesting route is the one that takes place when accessing the Dashboard page.
+In this route, we can see the call to "devquote" (a function used to show a random quote of a random developer) and to "nicejob" (a function that returns a nice phrase to the user, based on it's progress in buggyCodes).
+First of all, we need to know if the user created the account just today or not and then - with a series of IF - we can manage to show the right phrase for him.
+In this route, it's also managed the leaderboard shown in the Dashboard page: a query to mongoDB to know which users (firstName | email | level | onlineAvatar) have the highest levels.
+At the end of the route, index.ejs (the Dashboard page) is rendered and it knows all the current user basic information, a quote from a developer and its author, the current online leaderboard and a phrase to indicate the current user's progress.
+
+```
+router.get("/log",ensureAuth, async(req,res)=>{
+    var quote = devquote();
+    var howIsGoing;
+
+
+    var userDate = req.user.createdAt;
+    let ts = Date.now();
+    let date_ob = new Date(ts);
+    let todayDate = date_ob.getDate();
+    
+  
+    var rankSearch = await User_model.aggregate([
+				{ $sort : { level: -1 } },
+				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, "onlineAvatar" : 1, _id: 1 } }
+			       ]);
+
+
+    if (userDate.getDate() == todayDate && req.user.ExercisesDone == 0) {
+	howIsGoing = "You just registered today and didn't do any exercise.. Move on!";
+    }
+
+    if (userDate.getDate() == todayDate && req.user.ExercisesDone > 0) {
+	howIsGoing = "You just registered today.. Anyway.. " + nicejob();
+    }
+
+    if (userDate.getDate() != todayDate && req.user.ExercisesDone == 0) {
+	howIsGoing = nicejob.not();
+    }
+
+    if (userDate.getDate() != todayDate && req.user.ExercisesDone > 0) {
+	howIsGoing = nicejob();
+    }
+
+    res.render('index',{userinfo:req.user, quoteMessage: quote.text, quoteAuthor: quote.author, onlineRanking: rankSearch, sentiment: howIsGoing})
+})
+```
+
 
 /avatar is a route to update the user avatar.
 This route get the avatarID (avid) from the avatars button in the Profile Page. Actually, I didn't wrote a route for every avatar but I used the query params provided by Express.
@@ -176,7 +250,14 @@ There is also a mongoDB query to update the user avatar that looks like this:
 																 );
 ```
 
-### AJAX Methodology
+/add/level is a route used for testing purpose. It just find the current user in mongoDB and then upgrades its level by one.
+This route should be linked to in-game mechanics, but the game it's not part of the Web Technologies exam.
+
+/add/stats is another route linked to buttons just for testing the graph in the Dashboard page. This route make use of express' query params and it's called with /add/stats?statistic=STATISTIC_NAME. The STATISTIC_NAME can be exercises, logic, speed or creativity. Those values are shown in a visual form thanks to the graph rendered in index.ejs.
+By using this route, we can upgrade by one those stats and see the graph changing in the Dashboard page.
+Of course, also this route should be linked to actions in game, but it's actually linked to the 4 buttons (one for each statistic) just to test its functionality.
+
+### AJAX Methodology + jQuery
 
 Some AJAX functionality implemented are:
 - In index.ejs:
