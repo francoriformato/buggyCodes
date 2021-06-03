@@ -39,11 +39,15 @@ An SSL certificate is required to provide https traffic in my website. HTTPS is 
 
 > What package are used in nodeJS?
 
-In *server.js*, it's required to have Express, Mongoose, Passport, bodyParser.
+It's required to have Express, Mongoose, Passport, bodyParser.
+Some other dependencies are: nicejob, devquote & bad-words.
 Express is a lightweight framework to provide multiple utilities. In particular, Router is really useful to create custom user's routes.
 Mongoose is used to establish a connection to my mongoDB Atlas Cluster.
 Passport is required to implement the Google Strategy for Log-In.
 bodyParser is useful to parse incoming request bodies and to use the req.body property (to read the result of forms, such as the ones found in the Profile Page).
+NiceJob is used to generate a random phrase for the user, taking account of its progress in buggyCodes.
+Devquote generates a random developer quote and its author.
+Bad-Words is a profanity filter that prevents the user to insert a motto or a country with bad words in it. Every bad words is censored with asterisk.
 
 > What is used to login to buggyCodes?
 
@@ -148,17 +152,17 @@ ensureAuth is a function that acknowledge if the user is authenticated.
 
 > OptionalsRoute.JS
 
-In this file, we have the actual usage of bodyParser to retrieve informations from the forms in the Profile Page.
-
 Here I defined /add/motto that is linked to a button in the Profile Page. This route establish a connection to mongoDB to update the motto of the user (typed in the form in the profile page) in the DB. The old motto is shown in the placeholder of the form.
-Here is the query used to archive this purpose:
+Here is the query used to archive this purpose, with the input of the user cleaned from eventual bad words:
 
 
      const bodyCall = req.body;
+     	
      await User_model.findOneAndUpdate(
 	{ email: req.user.email },
-	{ motto: bodyCall.motto },
+	{ motto: filter.clean(bodyCall.motto) },
 	{ new: true }
+				       );
 				     											  );
 
 The same has been done for /add/country, to let the user type its Country in the form and register it to mongoDB.
