@@ -1,11 +1,14 @@
 # buggyCodes
 #### A new way to learn programming through bugs
 
-buggyCodes is a project developed for a modern Web Technologies course, attended at University of Naples "Parthenope". A demo of the project and a video has been presented at the Hackathon "Gamification in Programming Education".
+buggyCodes is a project developed for a modern Web Technologies course, attended at University of Naples "Parthenope". 
+A demo of the project and a video has been presented at the Hackathon "Gamification in Programming Education".
 
-Video shown at the Hackathon: <a href="https://www.youtube.com/watch?v=4chRgkImtuY&ab_channel=FrancoRiformato"> Introducing buggyCodes </a>
+[Features] Video shown at the Hackathon: <a href="https://www.youtube.com/watch?v=4chRgkImtuY&ab_channel=FrancoRiformato"> Introducing buggyCodes </a>
 
 Live demo: <a href="https://buggycodes.games/"> buggyCodes </a>
+
+[Techical Aspects] Presentation for the exam [14/06/2021] :
 
 # Features
 The main features meaningful for the Web Technologies course developed for buggyCodes are:
@@ -26,6 +29,29 @@ The main features meaningful for the Web Technologies course developed for buggy
 Here is a diagram of the overall structure of the application:
 <a href="https://imgur.com/zffETFE">buggyCodes diagram</a>
 
+Initial project presentation: 03/05/2021
+
+Agreed upon receipt of 21/05/2021:
+- Usage of nginx as web server & reverse proxy;
+- Usage of mongoDB instead of mySQL;
+- Usage of nodeJS instead of Flask.
+
++ Focus on the web technologies used instead of the game in the application.
+
+### How to test buggyCodes?
+----
+
+> Method #1: Visiting https://buggycodes.games/
+In this way, it's required just to visit the page via a common web browser.
+The website will stay online from the date of delivery of the project.
+It will be online thanks to the usage of pm2 (a production process manager for nodeJS) running on my DigitalOcean Droplet.
+The database will be populated to test functionality like the user's motto and the online leaderboard.
+
+> Method #2: Setting up a nodeJS server
+To test the project in this way, it's required to have nodeJS installed on your own machine and run it.
+With this method, the SSL certificate may not work, so the PWA functionality may be broken.
+Please note that a nodeJS server is required to load the dependencies explained later and to load the game content.
+Running the project directly via Chrome will also result in the impossibility to load the game (it has to load multiple files and assets and this is forbidded by the default behaviour of the browser to avoid security risks).
 
 ### Elements Explanation
 ----
@@ -131,6 +157,12 @@ The default values are actually used to not have empty fields when creating a ne
 
 Images uploaded to show how the website is rendered on different devices.
 The overall style of the application is defined to be as similar as possibile to a native application, to give more relevance to its installability as PWA.
+Here are some screenshot taken on different platforms:
+- iOS [iPhone XS] : https://imgur.com/a/Wm4pmwH
+- iOS [iPhone XS] as PWA : https://imgur.com/a/jLOKPF8
+- iPadOS [iPad Air 4] and iPadOS as PWA : https://imgur.com/a/vWl00ni
+- Windows 10 [ASUS ROG G712, 1920x1080] : https://imgur.com/a/CmuDvxs
+- Windows 10 [ASUS ROG G712, 1920x1080] as PWA : https://imgur.com/a/KH7KmOo
 
 #### Routes
 In this image gallery it's shown how the different routes are mapped to the various elements of the pages.
@@ -271,8 +303,9 @@ Some AJAX functionality implemented are:
     $("#overview").load("ajax_sentiment.txt");
 	});
 	```
-This is required to load the exercises from a custom txt file, to have a way more easy updatability. It also load the sentiment.txt, that is a file that has an adjective to evaluate the current week of the user.
-For example if he did a lot of exercises, he will have "You're doing great!", while if he didn't, he will receive "You can do better than this!".
+This is required to load the exercises from a custom txt file, to have a way more easy updatability. 
+In this way, it's easy to implement a button that refresh only the exercises row, without reloading the entire page.
+More AJAX functionalities are linked to the update of the leaderboards or the update of the news.
 
 ### PWA functionalities
 
