@@ -1,5 +1,19 @@
 /* There will be some JS Function for the dashboard of buggyCodes */
 
+/* Leaderboard for mobile */
+
+function mobileLeaderboardLoad() {
+
+	var leaderboardMobile = document.getElementById('mobileLeaderboard');
+	var leaderboardDesktop = document.getElementById('desktopLeaderboard');
+
+	 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        	leaderboardDesktop.style.display = 'none';
+		leaderboardMobile.style.display = 'block';
+    }
+
+}
+
 /* ChartJS */
 
 function loadChart(exercises, logic, speed, creativity) {

@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose=require('mongoose');
-
+var nicejob = require('nicejob');
 const keys = require('./config/keys.js');
 const passport = require('passport');
 var cors = require('cors');

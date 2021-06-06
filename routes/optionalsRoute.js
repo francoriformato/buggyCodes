@@ -3,6 +3,7 @@ var express    = require('express')
 var bodyParser = require('body-parser');
 const User_model=require('../models/User')
 var devquote = require('devquote');
+var nicejob = require('nicejob');
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 var Filter = require('bad-words'),
 	filter = new Filter();
@@ -14,15 +15,38 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get("/log",ensureAuth, async(req,res)=>{
     var quote = devquote();
+    var howIsGoing;
+
+
+    var userDate = req.user.createdAt;
+    let ts = Date.now();
+    let date_ob = new Date(ts);
+    let todayDate = date_ob.getDate();
     
+  
     var rankSearch = await User_model.aggregate([
 				{ $sort : { level: -1 } },
-				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, _id: 1 } }
+				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, "onlineAvatar" : 1, _id: 1 } }
 			       ]);
 
 
-    console.log(rankSearch[0].level);
-    res.render('index',{userinfo:req.user, quoteMessage: quote.text, quoteAuthor: quote.author, onlineRanking: rankSearch})
+    if (userDate.getDate() == todayDate && req.user.ExercisesDone == 0) {
+	howIsGoing = "You just registered today and didn't do any exercise.. Move on!";
+    }
+
+    if (userDate.getDate() == todayDate && req.user.ExercisesDone > 0) {
+	howIsGoing = "You just registered today.. Anyway.. " + nicejob();
+    }
+
+    if (userDate.getDate() != todayDate && req.user.ExercisesDone == 0) {
+	howIsGoing = nicejob.not();
+    }
+
+    if (userDate.getDate() != todayDate && req.user.ExercisesDone > 0) {
+	howIsGoing = nicejob();
+    }
+
+    res.render('index',{userinfo:req.user, quoteMessage: quote.text, quoteAuthor: quote.author, onlineRanking: rankSearch, sentiment: howIsGoing})
 })
 
 

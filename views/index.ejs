@@ -67,7 +67,7 @@
 
 </header>
 
-<body onload="loadChart(<%=userinfo.ExercisesDone %>, <%=userinfo.ProgrammingLogic %>, <%=userinfo.Speed %>, <%=userinfo.Creativity %> )">
+<body onload="loadChart(<%=userinfo.ExercisesDone %>, <%=userinfo.ProgrammingLogic %>, <%=userinfo.Speed %>, <%=userinfo.Creativity %> ); mobileLeaderboardLoad()">
 
 <script>
 $(document).ready(function(){  
@@ -149,24 +149,61 @@ $(document).ready(function(){
         <div class="titlesContainer" id="statCont">
           <h2 class="mainTitle pb-2">Your stats</h2>
 
+	<div class="row" id="statsgraph">
+	<canvas id="myChart" style="width:100%; max-width:800px; max-height: 800px; height:800px;"></canvas>
+	</div>
 
+	<br>
 	
+	<div class="row" id="buttonColumn">
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=exercises" style="color:#ffffff;">For testing purpose, click here to change user stats: Exercises Done +1</a></button> 
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=logic" style="color:#ffffff;">For testing purpose, click here to change user stats: Programming Logic +1</a></button>  
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=speed" style="color:#ffffff;">For testing purpose,  click here to change user stats: ProgrammingSpeed +1</a></button>		   
+	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=creativity" style="color:#ffffff;">For testing purpose, click here to change user stats: Creativity +1</a></button>	   
+	</div>
 
 
-
-
-	<canvas id="myChart" style="width:100%; max-width:600px; max-height: 600px; height:600px;"></canvas>
-
-
-
-
-
+	<div class="hiddencontent leaderboard" id="mobileLeaderboard">
+			<div class="head">
+				<h2 class="boldSubtext">Top three players right now: </h2>
+			</div>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Exercises Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%=onlineRanking[0].firstName %></td>
+      <td><%=onlineRanking[0].level %></td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><%=onlineRanking[1].firstName %></td>
+      <td><%=onlineRanking[1].level %></td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><%=onlineRanking[2].firstName %></td>
+      <td><%=onlineRanking[2].level %></td>
+      <td>@fat</td>
+    </tr>
+  </tbody>
+</table>
+</div>
         </div>
-      </div>
+      </div>	
 
-      <div class="col-4">
+      <div class="col">
         <div class="overviewContainer" id="overview">
-	  <h2 class="boldSubtext" style="color: #f9786c" id="adjectiveStats">You're doing XXX!</h2>
+	  <h2 class="boldSubtext" style="color: #f9786c" id="adjectiveStats"><%=sentiment %></h2>
           <h6>You managed to go through <%=userinfo.ExercisesDone %> bugs!</h6>
           <br>
 
@@ -174,41 +211,54 @@ $(document).ready(function(){
           <h6><%=quoteMessage %></h6>	
 	  <h6>by <%=quoteAuthor %></h6>
         </div>
-
-	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=exercises" style="color:#ffffff;">For testing purpose, click here to change user stats: Exercises Done +1</a></button> 
-	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=logic" style="color:#ffffff;">For testing purpose, click here to change user stats: Programming Logic +1</a></button>  
-	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#74c5c9"><a href="/add/stats?statistic=speed" style="color:#ffffff;">For testing purpose,  click here to change user stats: ProgrammingSpeed +1</a></button>		   
-	<button class="btn btn-primary btn-sm" type="submit" style="background-color:#fdc689"><a href="/add/stats?statistic=creativity" style="color:#ffffff;">For testing purpose, click here to change user stats: Creativity +1</a></button>	   
-	<br> <br>
+	
 	<div class="card mb-3">
     	<div class="card-body text-center shadow">
-	<img class="rounded-circle mb-3 mt-4" src="/img/<%=userinfo.onlineAvatar %>.png" width="160" height="160">	
+	<img class="rounded-circle mb-3 mt-4" id="onlineResume" src="/img/<%=userinfo.onlineAvatar %>.png" width="160" height="160">	
 	<h6>Your level: <%=userinfo.level %> </h6>    
 	</div>
     </div>
-	<div class="leaderboard">
+
+<br>
+
+<div class="leaderboard" id="desktopLeaderboard">
 			<div class="head">
 				<h2 class="boldSubtext">Top three players right now: </h2>
 			</div>
-			<div>
-				<ol>
-					<li>
-						<mark><%=onlineRanking[0].firstName %></mark>
-						<small>with a level of <%=onlineRanking[0].level %></small>
-					</li>
-					<li>
-						<mark><%=onlineRanking[1].firstName %></mark>
-						<small>with a level of <%=onlineRanking[1].level %></small>
-					</li>
-					<li>
-						<mark><%=onlineRanking[2].firstName %></mark>
-						<small>with a level of <%=onlineRanking[1].level %></small>
-					</li>
-				</ol>
-			</div>
-		</div>
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Level</th>
+      <th scope="col">Exercises Done</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%=onlineRanking[0].firstName %></td>
+      <td><%=onlineRanking[0].level %></td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td><%=onlineRanking[1].firstName %></td>
+      <td><%=onlineRanking[1].level %></td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td><%=onlineRanking[2].firstName %></td>
+      <td><%=onlineRanking[2].level %></td>
+      <td>@fat</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
- 	 </div>
+	
+		
 
   </div>
 
