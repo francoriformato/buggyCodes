@@ -42,12 +42,14 @@ Agreed upon receipt of 21/05/2021:
 ----
 
 > Method #1: Visiting https://buggycodes.games/
+
 In this way, it's required just to visit the page via a common web browser.
 The website will stay online from the date of delivery of the project.
 It will be online thanks to the usage of pm2 (a production process manager for nodeJS) running on my DigitalOcean Droplet.
 The database will be populated to test functionality like the user's motto and the online leaderboard.
 
 > Method #2: Setting up a nodeJS server
+
 To test the project in this way, it's required to have nodeJS installed on your own machine and run it.
 With this method, the SSL certificate may not work, so the PWA functionality may be broken.
 Please note that a nodeJS server is required to load the dependencies explained later and to load the game content.
