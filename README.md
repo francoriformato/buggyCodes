@@ -294,7 +294,7 @@ Of course, also this route should be linked to actions in game, but it's actuall
 
 ### Offline behaviour
 
-When the page is running in offline mode, we can notice it thanks to the <h6> in the upper right.
+When the page is running in offline mode, we can notice it thanks to the h6 in the upper right.
 It will say "You're offline" and in the leaderboard section of the dashboard page there will be a warning that says "Your leaderboard may not be updated! You're offline."
 When in offline mode, the pages of the website will still be available but the content will not be updated with the server.
 
