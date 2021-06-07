@@ -15,6 +15,10 @@ body {
     padding: 0;
 }
 
+td {
+vertical-align: middle;
+}
+
 /* SCROLLBAR */
 
 body::-webkit-scrollbar {
@@ -161,7 +165,9 @@ main {
     font-size: 0.8rem;
 }
 
-
+.leaderboardOffline {
+    display: none;
+}
 
 
 /* LESSONS CARDS */

@@ -1,4 +1,33 @@
-/* There will be some JS Function for the dashboard of buggyCodes */
+/* Page status */
+
+document.addEventListener('DOMContentLoaded', init, false);
+
+function init() {
+    var sContainer = document.querySelector('#statusContainer');
+    var lContainer = document.querySelector('.leaderboardOffline');
+    const statusElem = document.querySelector('.page-status');
+
+  if (!navigator.onLine) {
+    statusElem.innerHTML = 'offline';
+    lContainer.style.display = 'block';
+  }
+ 
+  if (statusElem.innerHTML == 'online') {
+    sContainer.style.display = 'none';
+  } 
+}
+
+
+
+/* Exercise load & reload */
+
+function loadExercises() {
+
+$(document).ready(function(){  
+    $("#exercisesRow").load("ajax_exercises.txt");
+});
+
+}
 
 /* Leaderboard for mobile */
 

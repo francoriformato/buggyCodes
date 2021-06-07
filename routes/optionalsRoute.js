@@ -26,7 +26,7 @@ router.get("/log",ensureAuth, async(req,res)=>{
   
     var rankSearch = await User_model.aggregate([
 				{ $sort : { level: -1 } },
-				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, "onlineAvatar" : 1, _id: 1 } }
+				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, "onlineAvatar" : 1, "ExercisesDone" : 1, _id: 1 } }
 			       ]);
 
 
@@ -52,16 +52,13 @@ router.get("/log",ensureAuth, async(req,res)=>{
 
 router.get("/profile",ensureAuth, async(req, res) => {
 
-   	var query = await User_model.aggregate([
-    					{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
+   	var mottoQuery = await User_model.aggregate([
+    					{ "$match": { "User_model.id": { $ne: req.user.id } } },
    					{ "$sample": { "size": 1 } },
-					{ $project: { "motto": 1,  _id: 0 } }
-				  ]).exec()
-
-	var randomStringified = JSON.stringify(query);
-	var editedMotto = randomStringified.slice(11, -3);
+					{ $project: { "motto" : 1, "country": 1} }
+				  ]);
  
-        res.render("profile",{userinfo:req.user, randomMotto: editedMotto})
+        res.render("profile",{userinfo:req.user, anotherMotto: mottoQuery})
 });
 
 

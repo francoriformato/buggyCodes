@@ -1,6 +1,8 @@
 const CACHE_NAME = 'buggy-cache';
 const toCache = [
+  '/',
   './game_bin',
+  '/js/dashboardFunctions.js',
 ];
 
 self.addEventListener('install', function(event) {
@@ -13,21 +15,6 @@ self.addEventListener('install', function(event) {
   )
 })
 
-
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    caches.keys()
-      .then((keyList) => {
-        return Promise.all(keyList.map((key) => {
-          if (key !== CACHE_NAME) {
-            console.log('[ServiceWorker] Removing old cache', key)
-            return caches.delete(key)
-          }
-        }))
-      })
-      .then(() => self.clients.claim())
-  )
-})
 
 
 self.addEventListener('fetch', function(event) {
@@ -43,6 +30,8 @@ self.addEventListener('fetch', function(event) {
 })
 
 
+
+
 self.addEventListener('activate', function(event) {
   event.waitUntil(
     caches.keys()
@@ -57,3 +46,6 @@ self.addEventListener('activate', function(event) {
       .then(() => self.clients.claim())
   )
 })
+
+
+

@@ -61,19 +61,14 @@
     <div class="user" id="userdiv">
       <a href="/profile"><img class="userIMG rounded-circle border border-white" id="userProfileIMG" src=<%=userinfo.image %> alt="User Profile Picture"></a>
       <span class="caption">Hi, <%=userinfo.firstName %></span>
+      <span class="caption" id="statusContainer">You are now <b class="page-status">online</b> </span>
     </div>
 
   </div>
 
 </header>
 
-<body onload="loadChart(<%=userinfo.ExercisesDone %>, <%=userinfo.ProgrammingLogic %>, <%=userinfo.Speed %>, <%=userinfo.Creativity %> ); mobileLeaderboardLoad()">
-
-<script>
-$(document).ready(function(){  
-    $("#exercisesRow").load("ajax_exercises.txt");
-});
-</script>
+<body onload="loadChart(<%=userinfo.ExercisesDone %>, <%=userinfo.ProgrammingLogic %>, <%=userinfo.Speed %>, <%=userinfo.Creativity %> ); loadExercises(); mobileLeaderboardLoad()">
 
 
 <nav class="navbar">
@@ -131,7 +126,10 @@ $(document).ready(function(){
 
   <div class="titlesContainer" id="todCont">
     <h2 class="mainTitle pb-2">Today's Trials</h2>
-    <h6 class="subtitle">Here you can find some playful exercise to learn from!</h6>
+    <h6 class="subtitle">Here you can find some playful exercise to learn from! <svg style="cursor: pointer;" onclick="loadExercises()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+</svg> </h6>
   </div>
 
   <div class="row" id="exercisesRow">
@@ -166,6 +164,7 @@ $(document).ready(function(){
 	<div class="hiddencontent leaderboard" id="mobileLeaderboard">
 			<div class="head">
 				<h2 class="boldSubtext">Top three players right now: </h2>
+				<h6 class="leaderboardOffline">Your leaderboard may not be updated! You're <b>offline</b> </h6>
 			</div>
 <table class="table table-sm">
   <thead>
@@ -181,19 +180,19 @@ $(document).ready(function(){
       <th scope="row">1</th>
       <td><%=onlineRanking[0].firstName %></td>
       <td><%=onlineRanking[0].level %></td>
-      <td>@mdo</td>
+      <td><%=onlineRanking[0].ExercisesDone %></td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td><%=onlineRanking[1].firstName %></td>
       <td><%=onlineRanking[1].level %></td>
-      <td>@fat</td>
+      <td><%=onlineRanking[1].ExercisesDone %></td>
     </tr>
     <tr>
       <th scope="row">3</th>
       <td><%=onlineRanking[2].firstName %></td>
       <td><%=onlineRanking[2].level %></td>
-      <td>@fat</td>
+      <td><%=onlineRanking[2].ExercisesDone %></td>
     </tr>
   </tbody>
 </table>
@@ -224,11 +223,13 @@ $(document).ready(function(){
 <div class="leaderboard" id="desktopLeaderboard">
 			<div class="head">
 				<h2 class="boldSubtext">Top three players right now: </h2>
+				<h6 class="leaderboardOffline">Your leaderboard may not be updated! You're <b>offline</b> </h6>
 			</div>
 <table class="table table-sm">
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Avatar</th>
       <th scope="col">Name</th>
       <th scope="col">Level</th>
       <th scope="col">Exercises Done</th>
@@ -237,21 +238,24 @@ $(document).ready(function(){
   <tbody>
     <tr>
       <th scope="row">1</th>
+      <td> <img class="rounded-circle mb-3 mt-4" src="/img/<%=onlineRanking[0].onlineAvatar %>.png" width="50" height="50"</td>
       <td><%=onlineRanking[0].firstName %></td>
       <td><%=onlineRanking[0].level %></td>
-      <td>@mdo</td>
+      <td><%=onlineRanking[0].ExercisesDone %></td>
     </tr>
     <tr>
       <th scope="row">2</th>
+      <td> <img class="rounded-circle mb-3 mt-4" src="/img/<%=onlineRanking[1].onlineAvatar %>.png" width="50" height="50"</td>
       <td><%=onlineRanking[1].firstName %></td>
       <td><%=onlineRanking[1].level %></td>
-      <td>@fat</td>
+      <td><%=onlineRanking[1].ExercisesDone %></td>
     </tr>
     <tr>
       <th scope="row">3</th>
+      <td> <img class="rounded-circle mb-3 mt-4" src="/img/<%=onlineRanking[2].onlineAvatar %>.png" width="50" height="50"</td>
       <td><%=onlineRanking[2].firstName %></td>
       <td><%=onlineRanking[2].level %></td>
-      <td>@fat</td>
+      <td><%=onlineRanking[2].ExercisesDone %></td>
     </tr>
   </tbody>
 </table>
