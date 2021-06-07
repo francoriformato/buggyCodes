@@ -211,20 +211,17 @@ In fact, in /profile, we have:
 ```
 router.get("/profile",ensureAuth, async(req, res) => {
 
-   	var query = await User_model.aggregate([
-    					{ "$match": { "User_model.motto": { $ne: req.user.motto } } },
+var mottoQuery = await User_model.aggregate([
+    					{ "$match": { "User_model.id": { $ne: req.user.id } } },
    					{ "$sample": { "size": 1 } },
-					{ $project: { "motto": 1,  _id: 0 } }
-				  ]).exec()
-
-	var randomStringified = JSON.stringify(query);
-	var editedMotto = randomStringified.slice(11, -3);
+					{ $project: { "motto" : 1, "country": 1} }
+				  ]);
  
-        res.render("profile",{userinfo:req.user, randomMotto: editedMotto})
+        res.render("profile",{userinfo:req.user, anotherMotto: mottoQuery})
 });
 ```
 This route permits to the profile page to access infos such as the basic user information (userinfo) and a randomMotto.
-In particular, randomMotto is a random phrase associated to another user and requested with a mongoDB query.
+In particular, anotherMotto is a random phrase associated to another user and requested with a mongoDB query.
 The query randomizes which motto to show, so it will show a different one every time we reload the page.
 
 Another interesting route is the one that takes place when accessing the Dashboard page.
@@ -294,6 +291,12 @@ This route should be linked to in-game mechanics, but the game it's not part of 
 /add/stats is another route linked to buttons just for testing the graph in the Dashboard page. This route make use of express' query params and it's called with /add/stats?statistic=STATISTIC_NAME. The STATISTIC_NAME can be exercises, logic, speed or creativity. Those values are shown in a visual form thanks to the graph rendered in index.ejs.
 By using this route, we can upgrade by one those stats and see the graph changing in the Dashboard page.
 Of course, also this route should be linked to actions in game, but it's actually linked to the 4 buttons (one for each statistic) just to test its functionality.
+
+### Offline behaviour
+
+When the page is running in offline mode, we can notice it thanks to the <h6> in the upper right.
+It will say "You're offline" and in the leaderboard section of the dashboard page there will be a warning that says "Your leaderboard may not be updated! You're offline."
+When in offline mode, the pages of the website will still be available but the content will not be updated with the server.
 
 ### AJAX Methodology + jQuery
 
