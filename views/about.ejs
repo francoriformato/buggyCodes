@@ -33,8 +33,9 @@
 
 
     <div class="user" id="userdiv">
-      <img class="userIMG rounded-circle border border-white" id="userProfileIMG" src=<%=userinfo.image %> alt="User Profile Picture" onclick="openURL()">
-      <span class="caption">Hi, <%=userinfo.firstName %></a></span>
+      <a href="/profile"><img class="userIMG rounded-circle border border-white" id="userProfileIMG" src=<%=userinfo.image %> alt="User Profile Picture"></a>
+      <span class="caption">Hi, <%=userinfo.firstName %></span>
+      <span class="caption" id="statusContainer">You are now <b class="page-status">online</b> </span>
     </div>
 
   </div>

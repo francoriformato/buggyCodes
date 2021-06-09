@@ -1,3 +1,21 @@
+/* AJAX load random motto */
+
+function ajax_loadRandom() {
+var randomMotto = document.getElementById("moreMotto");
+var affiliatedCountry = document.getElementById("moreCountry");
+
+$.get("/add/randomMotto", function(data) {
+  var randomMottoGen = data.msg[0].motto;
+  var affiliatedCountryGen = data.msg[0].country;
+  console.log(data.msg[0].motto);
+  console.log(data.msg[0].country);
+
+  randomMotto.innerHTML = randomMottoGen;
+  affiliatedCountry.innerHTML = affiliatedCountryGen;
+  
+});
+
+}
 
 function showAvatars(userLevel) {
 

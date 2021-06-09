@@ -107,8 +107,26 @@ router.get('/add/level', urlencodedParser, async (req, res)=>{
 
 router.get('/add/randomMotto', urlencodedParser, async (req, res)=>{
 
-    	res.redirect('/profile');
+	var mottoRandom = await User_model.aggregate([
+    					{ "$match": { "User_model.id": { $ne: req.user.id } } },
+   					{ "$sample": { "size": 1 } },
+					{ $project: { "motto" : 1, "country": 1} }
+				  ]);
+
+    	res.json({msg: mottoRandom});
 })
+
+
+router.get('/reload/leaderboard', urlencodedParser, async (req, res)=>{
+
+	var updatedLeaderboard = await User_model.aggregate([
+				{ $sort : { level: -1 } },
+				{ $project: { "level": 1,  "email" : 1, "firstName" : 1, "onlineAvatar" : 1, "ExercisesDone" : 1, _id: 1 } }
+			       ]);
+
+    	res.json({msg: updatedLeaderboard});
+})
+
 
 
 router.get('/avatar', async function (req, res) {
