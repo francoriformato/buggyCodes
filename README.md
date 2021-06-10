@@ -8,7 +8,7 @@ A demo of the project and a video has been presented at the Hackathon "Gamificat
 
 Live demo: <a href="https://buggycodes.games/"> buggyCodes </a>
 
-[Techical Aspects] Presentation for the exam [14/06/2021] : <a href="https://drive.google.com/file/d/1UKQO1-z6hPpWSMPjffcoYrNTPGDeu3vn/view?usp=sharing"> buggyCodes - Google Documents </a>
+[Techical Aspects] Presentation for the exam [14/06/2021] : <a href="https://drive.google.com/file/d/1IzFWuxBm04d8ViBqaWSxvpLEjok5mt71/view?usp=sharing"> buggyCodes - Google Documents </a>
 
 ### How to test buggyCodes?
 ----
