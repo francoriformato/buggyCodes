@@ -27,6 +27,9 @@ With this method, the SSL certificate may not work, so the PWA functionality may
 Please note that a nodeJS server is required to load the dependencies explained later and to load the game content.
 Running the project directly via Chrome will also result in the impossibility to load the game (it has to load multiple files and assets and this is forbidded by the default behaviour of the browser to avoid security risks).
 
+To clone the project, download the whole repository and install the propher dependencies, via the command npm install.
+Please note that it's required to change the values in /config/keys.js. In particular, it requires a mongoDB Atlas dbURI and a google ClientID & ClientSecret.
+
 # Features
 The main features meaningful for the Web Technologies course developed for buggyCodes are:
 
