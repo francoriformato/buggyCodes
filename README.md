@@ -2,18 +2,18 @@
 #### A new way to learn programming through bugs
 
 buggyCodes is a project developed for a modern Web Technologies course, attended at University of Naples "Parthenope". 
-A demo of the project and a video has been presented at the Hackathon "Gamification in Programming Education".
+A demo of the project and a video has been presented at the Hackathon "Gamification in Programming Education" and it won the first place.
 
 [Features] Video shown at the Hackathon: <a href="https://www.youtube.com/watch?v=4chRgkImtuY&ab_channel=FrancoRiformato"> Introducing buggyCodes </a>
 
-Live demo: <a href="https://buggycodes.games/"> buggyCodes </a>
+Live demo [expired, no more credits on DigitalOcean]: <a href="https://buggycodes.games/"> buggyCodes </a>
 
 [Techical Aspects] Presentation for the exam [14/06/2021] : <a href="https://drive.google.com/file/d/1a8txWiY_dUUxHr7vhQ6bNmd2im6WvHqV/view?usp=sharing"> buggyCodes - Google Documents </a>
 
 ### How to test buggyCodes?
 ----
 
-> Method #1: Visiting https://buggycodes.games/
+> [OUTDATED] Method #1: Visiting https://buggycodes.games/
 
 In this way, it's required just to visit the page via a common web browser.
 The website will stay online from the date of delivery of the project.
